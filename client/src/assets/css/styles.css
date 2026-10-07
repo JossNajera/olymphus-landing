@@ -1,0 +1,256 @@
+/* FUENTE DE LETRA */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* CONFIGURACION POR DEFECTO */
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bgsite:#071A33;
+}
+
+body{
+  /* Esta configuracion deja fijo la imagen de fondo cuando se hace scroll*/
+  background-image: url('../logo/fondo3.jpg');
+  background-repeat: no-repeat; /*Evita que la imagen se multiplique en mosaico. */
+  background-attachment: fixed; /* Fija la imagen para que se quede estática mientras el usuario desplaza la página. */
+  background-size: cover; /*Estira la imagen para que cubra toda la pantalla sin perder su proporción.*/
+  background-position: center; /*: Centra la imagen en el fondo de la pantalla*/
+}
+
+input{
+    font-family: "Poppins", sans-serif;
+    background: var(--bgsite);
+}
+
+.bg-site{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border-bottom-custom {
+    border-bottom: 2px solid rgba(25, 71, 238, 0.4); /* Color blanco azulado (LightBlue) con transparencia */
+    border-top: 2px solid rgba(25, 71, 238, 0.4); /* Color blanco azulado (LightBlue) con transparencia */
+   
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);     /* Sutil destello azul bajo el borde */
+  }
+
+  /* Espaciado para evitar que el navbar fijo tape el contenido superior */
+    .hero-section {
+      padding-top: 180px; 
+      padding-bottom: 50px;
+    }
+
+    /* Columna 2: Configuración de la imagen de fondo */
+    .bg-image-column {
+      background-image: url('../logo/img_back.png'); /* Reemplaza con tu imagen */
+      background-size: cover;
+      background-position: center;
+      min-height: 350px; /* Asegura visibilidad en pantallas grandes */
+      border-radius: 16px;
+    }
+
+    /* Columna 3: Iconos circulares azul rey */
+    .icon-circle {
+      width: 32px;
+      height: 32px;
+      background-color: #4169e1; /* Azul Rey / Royal Blue */
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0; /* Evita que el círculo se deforme en textos largos */
+    }
+
+  /* Estilos globales de la sección servicios*/
+    .services-section {
+      color: #ffffff;
+      padding: 60px 24px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    
+    .servicios-row{
+      padding-top: 150px; 
+    }
+
+    .services-title {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .services-title span {
+      color: #00a2ff; /* Color azul celeste para "Servicios" */
+    }
+
+    .services-subtitle {
+      color: #a0aec0;
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+
+    /* Diseño personalizado de las Tarjetas (Cards) */
+    .service-card {
+      background-color: rgba(6, 18, 46, 0.8); /* Fondo semi-transparente oscuro */
+      border: 2px solid #002266; /* Borde azul oscuro inicial */
+      border-radius: 16px;
+      padding: 30px 20px;
+      height: 100%;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: d-flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Efecto Hover para replicar el brillo azulado de la imagen */
+    .service-card:hover {
+      border-color: #0055ff;
+      box-shadow: 0 0 20px rgba(0, 85, 255, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .card-list-info:hover {
+      border-color: #0055ff;
+      box-shadow: 0 0 20px rgba(0, 85, 255, 0.4);
+      transform: translateY(-5px);
+    }
+
+    /* Configuración de las imágenes/iconos del encabezado */
+    .card-icon {
+      max-height: 70px;
+      width: auto;
+      margin-bottom: 20px;
+      object-fit: contain;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    /* Botón circular azul inferior con la flecha */
+    .btn-arrow {
+      width: 36px;
+      height: 36px;
+      background-color: #0055ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-arrow:hover {
+      background-color: #0044cc;
+      color: #ffffff;
+    }
+
+    .landing-section{
+      padding-top: 100px; 
+    }
+
+    .nosotros-section{
+      padding-top: 80px;
+    }
+
+    .img-aboutus{
+      opacity: 80%;
+    }
+
+    /* Clase para el texto del navbar*/
+        .texto-brillo {
+            color: #ffffff;
+            /* font-size: 3rem; */
+            font-weight: bold;
+            letter-spacing: 2px;
+            /* Aplicamos la animación: nombre, duración, suavizado, e infinito */
+            animation: parpadeoLento 4s ease-in-out infinite;
+        }
+
+        /* Definición de la animación */
+        @keyframes parpadeoLento {
+            0%, 100% {
+                opacity: 0.4;
+                text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+            }
+            50% {
+                opacity: 1;
+                /* El text-shadow crea el efecto de "subir el brillo" */
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                             0 0 20px rgba(255, 255, 255, 0.5),
+                             0 0 30px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+    /* Clase para el texto del bóton contactanos del navbar */
+        .texto-brillo-btn {
+            color: #0055ff;
+            /* font-size: 3rem; */
+            font-weight: bold;
+            letter-spacing: 2px;
+            /* Aplicamos la animación: nombre, duración, suavizado, e infinito */
+            animation: parpadeoLento2 4s ease-in-out infinite;
+        }
+
+        /* Definición de la animación */
+        @keyframes parpadeoLento2 {
+            0%, 100% {
+                opacity: 0.4;
+                text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+            }
+            50% {
+                opacity: 1;
+                /* El text-shadow crea el efecto de "subir el brillo" */
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                             0 0 20px rgba(255, 255, 255, 0.5),
+                             0 0 30px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+
+    /* Corrige el color de fondo del menú desplegable solo en móviles para que sea legible */
+
+@media (max-width: 991.98px) {
+      .navbar-floating-custom {
+        border-radius: 20px; /* Bordes menos pronunciados en pantallas chicas */
+      }
+      .navbar-collapse {
+        background-color: rgba(15, 23, 42, 0.95); 
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin-top: 1rem;
+        border: 1px solid rgba(173, 216, 230, 0.2);
+      }
+      .hero-section {
+      padding-top: 200px; 
+      padding-bottom: 80px;
+    }
+
+    .btns-info {
+      flex-direction: column;
+    }
+    }
