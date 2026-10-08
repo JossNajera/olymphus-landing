@@ -5,9 +5,13 @@ const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587, // Al desplegar a producción se cambia al puerto 587 porque Render, AWS o Digital Ocean Bloquean el puerto 465 para eviar el spam de envios de corros.
     secure: false, // true para puerto 465 en modo local, false para otros puertos en este caso para subir a producción
+    family: 4,             // <-- ¡CRÍTICO! Fuerza a Node.js a usar IPv4 y evita el error ENETUNREACH
     auth: {
         user: process.env.CORREO, // Tu correo personal
         pass: process.env.PAZZ // La contraseña de 16 dígitos generada en Google
+    },
+    tls: {
+        rejectUnauthorized: false // Evita bloqueos por certificados TLS estrictos en Render
     }
 });
 
