@@ -1,10 +1,10 @@
 const brevo = require('@getbrevo/brevo');
 
 // CONFIGURAR EL CLIENTE DE BREVO
-const apiInstance = new brevo.TransactionalEmailsApi();
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
 // Autenticación mediante la API Key guardada en Render
-const apiKey = brevo.ApiClient.instance.authentications['api-key'];
+const apiKey = SibApiV3Sdk.ApiClient.instance.authentications['api-key'];
 apiKey.apiKey = process.env.BREVO_API_KEY;
 
 
@@ -184,7 +184,7 @@ const plantillaProspecto = `
 `;
 
   // CONFIGURACIÓN DEL OBJETO DE CORREO PARA BREVO
-    const sendSmtpEmail = new brevo.SendSmtpEmail();
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = asunto;
     sendSmtpEmail.htmlContent = plantillaProspecto;
@@ -390,7 +390,7 @@ const enviarCorreoCEO = async( correo2, asunto2, nombreCompleto, correo, telefon
 `;
 
   // CONFIGURACIÓN DEL OBJETO DE CORREO PARA BREVO
-    const sendSmtpEmail = new brevo.SendSmtpEmail();
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = asunto2;
     sendSmtpEmail.htmlContent = plantillaCEO;
