@@ -1,11 +1,9 @@
-const SibApiV3Sdk = require('@getbrevo/brevo');
+const { BrevoClient } = require('@getbrevo/brevo');
 
-// CONFIGURAR EL CLIENTE DE BREVO
-const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-
-// Autenticación mediante la API Key guardada en Render
-const apiKey = SibApiV3Sdk.ApiClient.instance.authentications['api-key'];
-apiKey.apiKey = process.env.BREVO_API_KEY;
+// CONFIGURAR EL CLIENTE MODERNO DE BREVO
+const brevo = new BrevoClient({ 
+    apiKey: process.env.BREVO_API_KEY 
+});
 
 
 // ENVIAR CORREO A PROSPECTOS
@@ -184,32 +182,28 @@ const plantillaProspecto = `
 `;
 
   // CONFIGURACIÓN DEL OBJETO DE CORREO PARA BREVO
-    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-
-    sendSmtpEmail.subject = asunto;
-    sendSmtpEmail.htmlContent = plantillaProspecto;
-    
-    // Remitente (Tu cuenta de soporte autenticada)
-    sendSmtpEmail.sender = { 
-        name: "Olymphus TI", 
-        email: process.env.CORREO 
-    };
-    
-    // Destinatario (El prospecto que llenó el formulario)
-    sendSmtpEmail.to = [{ 
-        email: correo, 
-        name: nombreCompleto 
-    }];
-
-    try {
+  try {
         console.log("Enviando petición de correo a la API de Brevo...");
-        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
         
-        console.log('Correo enviado exitosamente a través de Brevo. ID:', data.messageId);
+        // SINTAXIS MODERNA V4+: Pasamos el objeto de configuración directo
+        const data = await brevo.transactionalEmails.sendTransacEmail({
+            subject: asunto,
+            htmlContent: plantillaProspecto,
+            sender: { 
+                name: "Olymphus TI", 
+                email: process.env.CORREO 
+            },
+            to: [{ 
+                email: correo, 
+                name: nombreCompleto 
+            }]
+        });
+        
+        console.log('Correo enviado exitosamente. ID:', data.messageId);
         return true;
     } catch (error) {
-        // Captura el error de la API si Brevo llega a rechazar la estructura
-        console.error('Error al enviar correo con Brevo:', error.response ? error.response.body : error);
+        // En las versiones nuevas, la respuesta de error viene estructurada dentro del objeto
+        console.error('Error al enviar correo:', error.message || error);
         return false;
     }
 };
@@ -390,31 +384,26 @@ const enviarCorreoCEO = async( correo2, asunto2, nombreCompleto, correo, telefon
 `;
 
   // CONFIGURACIÓN DEL OBJETO DE CORREO PARA BREVO
-    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-
-    sendSmtpEmail.subject = asunto2;
-    sendSmtpEmail.htmlContent = plantillaCEO;
-    
-    // Remitente: Tu cuenta de soporte/sistema configurada en las variables de entorno de Render
-    sendSmtpEmail.sender = { 
-        name: "Olymphus TI", 
-        email: process.env.CORREO 
-    };
-    
-    // Destinatario: El correo del CEO recibido por parámetro (correo2)
-    sendSmtpEmail.to = [{ 
-        email: correo2, 
-        name: "Olymphus TI <Notificación>" 
-    }];
-
-    try {
+       try {
         console.log("Enviando correo de notificación al CEO a la API de Brevo...");
-        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+        
+        const data = await brevo.transactionalEmails.sendTransacEmail({
+            subject: asunto2,
+            htmlContent: plantillaCEO,
+            sender: { 
+                name: "Olymphus TI", 
+                email: process.env.CORREO 
+            },
+            to: [{ 
+                email: correo2, 
+                name: "Olymphus TI <Notificación>" 
+            }]
+        });
         
         console.log('Correo enviado al CEO exitosamente. ID:', data.messageId);
         return true;
     } catch (error) {
-        console.error('Error al enviar correo al CEO con Brevo:', error.response ? error.response.body : error);
+        console.error('Error al enviar correo al CEO con Brevo:', error.message || error);
         return false;
     }
 
