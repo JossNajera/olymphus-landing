@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 // CONFIGURAR EL TRANSPORTE SMTP DE GMAIL.
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: '64.233.185.108',
     port: 587, // Al desplegar a producción se cambia al puerto 587 porque Render, AWS o Digital Ocean Bloquean el puerto 465 para eviar el spam de envios de corros.
     secure: false, // true para puerto 465 en modo local, false para otros puertos en este caso para subir a producción
     family: 4,             // <-- ¡CRÍTICO! Fuerza a Node.js a usar IPv4 y evita el error ENETUNREACH
@@ -11,7 +11,10 @@ const transporter = nodemailer.createTransport({
         pass: process.env.PAZZ // La contraseña de 16 dígitos generada en Google
     },
     tls: {
-        rejectUnauthorized: false // Evita bloqueos por certificados TLS estrictos en Render
+        rejectUnauthorized: false, // Evita bloqueos por certificados TLS estrictos en Render
+        // CRÍTICO: Le dice a Nodemailer qué dominio validar en el certificado SSL 
+        // ya que estamos conectando por medio de una IP directa.
+        servername: 'smtp.gmail.com' 
     }
 });
 
