@@ -62,7 +62,7 @@ const Nosotros = ({onContactClick}) => {
               {/* Métrica 1: Años */}
               <div className="col-md-4">
                 <div className="p-4 rounded-3 h-100" style={{ backgroundColor: 'rgba(6, 18, 46, 0.3)', border: '1px solid rgba(0, 85, 255, 0.15)' }}>
-                  <h3 className="h4 fw-bold text-white mb-1">+5 años impulsando negocios</h3>
+                  <h3 className="h4 fw-bold text-white mb-1">+5 años impulsando el crecimiento de negocios</h3>
                   <p className="text-muted small mb-0" style={{ color: '#718096' }}>Experiencia comprobada</p>
                 </div>
               </div>
