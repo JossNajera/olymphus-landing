@@ -404,7 +404,7 @@ const enviarCorreoCEO = async( correo2, asunto2, nombreCompleto, correo, telefon
     // Destinatario: El correo del CEO recibido por parámetro (correo2)
     sendSmtpEmail.to = [{ 
         email: correo2, 
-        name: "Olymphus TI" 
+        name: "Olymphus TI <Notificación>" 
     }];
 
     try {
