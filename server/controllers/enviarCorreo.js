@@ -1,22 +1,12 @@
-const nodemailer = require('nodemailer');
+const brevo = require('@getbrevo/brevo');
 
-// CONFIGURAR EL TRANSPORTE SMTP DE GMAIL.
-const transporter = nodemailer.createTransport({
-    host: '64.233.185.108',
-    port: 587, // Al desplegar a producción se cambia al puerto 587 porque Render, AWS o Digital Ocean Bloquean el puerto 465 para eviar el spam de envios de corros.
-    secure: false, // true para puerto 465 en modo local, false para otros puertos en este caso para subir a producción
-    family: 4,             // <-- ¡CRÍTICO! Fuerza a Node.js a usar IPv4 y evita el error ENETUNREACH
-    auth: {
-        user: process.env.CORREO, // Tu correo personal
-        pass: process.env.PAZZ // La contraseña de 16 dígitos generada en Google
-    },
-    tls: {
-        rejectUnauthorized: false, // Evita bloqueos por certificados TLS estrictos en Render
-        // CRÍTICO: Le dice a Nodemailer qué dominio validar en el certificado SSL 
-        // ya que estamos conectando por medio de una IP directa.
-        servername: 'smtp.gmail.com' 
-    }
-});
+// CONFIGURAR EL CLIENTE DE BREVO
+const apiInstance = new brevo.TransactionalEmailsApi();
+
+// Autenticación mediante la API Key guardada en Render
+const apiKey = brevo.ApiClient.instance.authentications['api-key'];
+apiKey.apiKey = process.env.BREVO_API_KEY;
+
 
 // ENVIAR CORREO A PROSPECTOS
 const enviarCorreoProspecto = async (correo, asunto, nombreCompleto, telefono, servicioInteres, comentario) => {
@@ -193,27 +183,33 @@ const plantillaProspecto = `
 
 `;
 
-// CONFIGURACIÓN DEL CORREO
+  // CONFIGURACIÓN DEL OBJETO DE CORREO PARA BREVO
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
+
+    sendSmtpEmail.subject = asunto;
+    sendSmtpEmail.htmlContent = plantillaProspecto;
+    
+    // Remitente (Tu cuenta de soporte autenticada)
+    sendSmtpEmail.sender = { 
+        name: "Olymphus TI", 
+        email: process.env.CORREO 
+    };
+    
+    // Destinatario (El prospecto que llenó el formulario)
+    sendSmtpEmail.to = [{ 
+        email: correo, 
+        name: nombreCompleto 
+    }];
+
     try {
-        const mailOptions = {
-            from: `"Olymphus TI" <${process.env.CORREO}>`,
-            to: correo,
-            subject: asunto,
-            html: plantillaProspecto, // Aqui va la plantilla HTML para el cuerpo del correo
-        }
-
-        // VERIFICAR QUE EL TRANSPORTADOR EXISTA ANTES DE EJECUTARSE
-        if (!transporter) {
-            throw new Error("El objeto 'transporter' de Nodemailer no está inicializado o importado correctamente.");
-        }
-        // METODO TRANSPORTADOR PARA ENVIAR LAS OPCIONES AL SERVIDOR SMTP
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Correo enviado: %s', info.messageId);
-
-        return true;
+        console.log("Enviando petición de correo a la API de Brevo...");
+        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
         
+        console.log('Correo enviado exitosamente a través de Brevo. ID:', data.messageId);
+        return true;
     } catch (error) {
-        console.error('Error al enviar correo:', error.message || error);
+        // Captura el error de la API si Brevo llega a rechazar la estructura
+        console.error('Error al enviar correo con Brevo:', error.response ? error.response.body : error);
         return false;
     }
 };
@@ -393,20 +389,32 @@ const enviarCorreoCEO = async( correo2, asunto2, nombreCompleto, correo, telefon
 
 `;
 
+  // CONFIGURACIÓN DEL OBJETO DE CORREO PARA BREVO
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
+
+    sendSmtpEmail.subject = asunto2;
+    sendSmtpEmail.htmlContent = plantillaCEO;
+    
+    // Remitente: Tu cuenta de soporte/sistema configurada en las variables de entorno de Render
+    sendSmtpEmail.sender = { 
+        name: "Olymphus TI", 
+        email: process.env.CORREO 
+    };
+    
+    // Destinatario: El correo del CEO recibido por parámetro (correo2)
+    sendSmtpEmail.to = [{ 
+        email: correo2, 
+        name: "Olymphus TI" 
+    }];
+
     try {
-        const mailOptions = {
-            from: correo2,
-            to: correo2,
-            subject: asunto2,
-            html: plantillaCEO, // Aqui va la plantilla HTML para el cuerpo del correo
-        }
+        console.log("Enviando correo de notificación al CEO a la API de Brevo...");
+        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
         
-        // METODO TRANSPORTADOR PARA ENVIAR LAS OPCIONES AL SERVIDOR SMTP
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Correo enviado: %s', info.messageId);
+        console.log('Correo enviado al CEO exitosamente. ID:', data.messageId);
         return true;
     } catch (error) {
-        console.error('Error al enviar correo:', error);
+        console.error('Error al enviar correo al CEO con Brevo:', error.response ? error.response.body : error);
         return false;
     }
 
