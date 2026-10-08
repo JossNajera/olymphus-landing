@@ -1,4 +1,4 @@
-const brevo = require('@getbrevo/brevo');
+const SibApiV3Sdk = require('@getbrevo/brevo');
 
 // CONFIGURAR EL CLIENTE DE BREVO
 const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
