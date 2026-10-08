@@ -40,7 +40,14 @@ const FormLanding = () => {
 
 try {
 
-   // MENSAJE AL USUARIO
+
+    // Realizamos la petición POST con Axios
+
+      const respuesta = await axios.post(`${import.meta.env.VITE_OLYMPHUS_URL}/api/contactanos`, data);
+
+      console.log('Respuesta del servidor:', respuesta.data);
+
+         // MENSAJE AL USUARIO
         Swal.fire({
         title: '¡Datos enviados!',
         text: 'Pronto nos pondremos en contacto contigo.',
@@ -48,11 +55,6 @@ try {
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Entendido'
       });
-    // Realizamos la petición POST con Axios
-
-      const respuesta = await axios.post(`${import.meta.env.VITE_OLYMPHUS_URL}/api/contactanos`, data);
-
-      console.log('Respuesta del servidor:', respuesta.data);
         
 
     } catch (error) {
