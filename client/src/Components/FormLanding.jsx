@@ -43,10 +43,7 @@ try {
 
     // Realizamos la petición POST con Axios
 
-      const respuesta = await axios.post(`${import.meta.env.VITE_OLYMPHUS_URL}/api/contactanos`, data);
-      // Diagnóstico temporal (Míralo en la consola de tu navegador presionando F12)
-console.log("🔍 ¿Qué está leyendo Vite?:", import.meta.env);
-console.log("🔗 URL final construida:", `${import.meta.env.VITE_OLYMPHUS_URL}/api/contactanos`);
+      const respuesta = await axios.post(`${import.meta.env.OLYMPHUS_URL}/api/contactanos`, data);
 
 
       console.log('Respuesta del servidor:', respuesta.data);
