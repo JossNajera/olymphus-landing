@@ -189,17 +189,24 @@ const plantillaProspecto = `
 // CONFIGURACIÓN DEL CORREO
     try {
         const mailOptions = {
-            from: "olymphusti.soluciones@gmail.com",
+            from: `"Olymphus TI" <${process.env.CORREO}>`,
             to: correo,
             subject: asunto,
             html: plantillaProspecto, // Aqui va la plantilla HTML para el cuerpo del correo
         }
+
+        // VERIFICAR QUE EL TRANSPORTADOR EXISTA ANTES DE EJECUTARSE
+        if (!transporter) {
+            throw new Error("El objeto 'transporter' de Nodemailer no está inicializado o importado correctamente.");
+        }
         // METODO TRANSPORTADOR PARA ENVIAR LAS OPCIONES AL SERVIDOR SMTP
         const info = await transporter.sendMail(mailOptions);
         console.log('Correo enviado: %s', info.messageId);
+
         return true;
+        
     } catch (error) {
-        console.error('Error al enviar correo:', error);
+        console.error('Error al enviar correo:', error.message || error);
         return false;
     }
 };
