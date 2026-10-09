@@ -151,13 +151,13 @@ const plantillaProspecto = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="body-text-table">
                     <tr>
                         <td class="paragraph">
-                            En breve nos pondremos en contacto contigo, a tu correo <a href="mailto:${correo}" class="link">${correo}</a>, ó, a tu número de teléfono ${telefono}, para que nos platiques un poco más sobre tu proyecto.
+                            Agradecemos tu interés en conocer nuestros servicios. En breve nos pondremos en contacto contigo para que nos platiques un poco más sobre tu proyecto.
                         </td>
                     </tr>
 
                     <tr>
                         <td class="paragraph">
-                            <strong class="paragraph-bold-title">Tenemos mas de 5 años en el mercado trasformado negocios con tecnología</strong>
+                            <strong class="paragraph-bold-title">Tenemos mas de 5 años en el mercado trasformado el crecimiento de negocios. </strong>
                             Si no tienes idea por dónde empezar tu proyecto, nosotros te orientamos a tomar las mejores decisiones para tu negocio.
                         </td>
                     </tr>

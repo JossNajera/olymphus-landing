@@ -78,7 +78,7 @@ const Nosotros = ({onContactClick}) => {
               {/* Métrica 3: Clientes */}
               <div className="col-md-4">
                 <div className="p-4 rounded-3 h-100" style={{ backgroundColor: 'rgba(6, 18, 46, 0.3)', border: '1px solid rgba(0, 85, 255, 0.15)' }}>
-                  <h3 className="h4 fw-bold text-white mb-1">+30 clientes satisfechos</h3>
+                  <h3 className="h4 fw-bold text-white mb-1">+150 clientes satisfechos</h3>
                   <p className="text-muted small mb-0" style={{ color: '#718096' }}>Organizaciones atendidas</p>
                 </div>
               </div>
