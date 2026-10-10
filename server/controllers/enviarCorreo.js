@@ -158,7 +158,14 @@ const plantillaProspecto = `
                     <tr>
                         <td class="paragraph">
                             <strong class="paragraph-bold-title">Tenemos mas de 5 años en el mercado trasformado el crecimiento de negocios. </strong>
-                            Si no tienes idea por dónde empezar tu proyecto, nosotros te orientamos a tomar las mejores decisiones para tu negocio.
+                            Si no tienes idea por dónde empezar tu proyecto, nosotros te orientamos a tomar las mejores decisiones para ayudar a mejorar los procesos de tu negocio.
+                        </td>
+                    </tr>
+
+                     <tr>
+                        <td class="paragraph">
+                            <strong class="paragraph-bold-title">Tenemos experiencia en el uso de herramientas tecnólogicas para el crecimiento empresarial. </strong>
+                            Automatizamos los procesos de tu negocio, planificamos estrategias empresariales y escalamos las tecnologías al siguiente nivel.
                         </td>
                     </tr>
 
@@ -208,7 +215,7 @@ const plantillaProspecto = `
     }
 };
 
-// ENVIAR CORREO AL CEO
+// ENVIAR CORREO AL CEO o Gerente TI
 const enviarCorreoCEO = async( correo2, asunto2, nombreCompleto, correo, telefono, servicioInteres, comentario) =>{
 
        // PLANTILLA HTML PROSPECTO
@@ -359,8 +366,8 @@ const enviarCorreoCEO = async( correo2, asunto2, nombreCompleto, correo, telefon
 
                     <tr>
                         <td class="paragraph">
-                            <strong class="paragraph-bold-title">${servicioInteres}</strong>
-                            ${comentario}
+                           Servicio de Interés: <strong class="paragraph-bold-title">  ${servicioInteres}</strong>
+                           Descripción del proyecto: ${comentario}
                         </td>
                     </tr>
 
