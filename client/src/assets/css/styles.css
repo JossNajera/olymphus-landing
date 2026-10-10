@@ -235,22 +235,32 @@ input{
     /* Corrige el color de fondo del menú desplegable solo en móviles para que sea legible */
 
 @media (max-width: 991.98px) {
-      .navbar-floating-custom {
-        border-radius: 20px; /* Bordes menos pronunciados en pantallas chicas */
+        .navbar-floating-custom {
+          border-radius: 20px; /* Bordes menos pronunciados en pantallas chicas */
+        }
+        .navbar-collapse {
+          background-color: rgba(15, 23, 42, 0.95); 
+          padding: 1.5rem;
+          border-radius: 15px;
+          margin-top: 1rem;
+          border: 1px solid rgba(173, 216, 230, 0.2);
+        }
+        .hero-section {
+        padding-top: 200px; 
+        padding-bottom: 80px;
       }
-      .navbar-collapse {
-        background-color: rgba(15, 23, 42, 0.95); 
-        padding: 1.5rem;
-        border-radius: 15px;
-        margin-top: 1rem;
-        border: 1px solid rgba(173, 216, 230, 0.2);
+
+      .btns-info {
+        flex-direction: column;
       }
-      .hero-section {
-      padding-top: 200px; 
-      padding-bottom: 80px;
     }
 
-    .btns-info {
-      flex-direction: column;
+      /* Cambio de tamaño de la imagen nosotros para dispositivos moviles */
+    @media (max-width: 375px) {
+
+      .img-aboutus{
+      width: 500px;
+      height: 300px;
+      padding-right: 40%;
     }
     }
