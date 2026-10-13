@@ -149,9 +149,9 @@ const Footer = () => {
               <i className="bi bi-facebook"></i>
             </a>
             {/* LinkedIn */}
-            {/* <a href="#" className="text-white text-decoration-none fs-4 transition-all mx-2" style={{ color: '#0a66c2' }}>
+            <a href="https://www.linkedin.com/in/olymphus-ti/" className="text-white text-decoration-none fs-4 transition-all mx-2" style={{ color: '#0a66c2' }}>
               <i className="bi bi-linkedin"></i>
-            </a> */}
+            </a>
             {/* GitHub */}
             {/* <a href="#" className="text-white text-decoration-none fs-4 mx-2">
               <i className="bi bi-github"></i>
