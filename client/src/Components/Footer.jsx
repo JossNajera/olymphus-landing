@@ -169,6 +169,10 @@ const Footer = () => {
 
         </div>
       </div>
+
+        <div className="text-center text-white-50 mt-3" style={{ fontSize: '0.75rem' }}> 
+            <p>&copy; 2026 Olymphus TI. All rights reserved</p>
+        </div>
     </footer>
     
     </>
