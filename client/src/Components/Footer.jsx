@@ -157,9 +157,9 @@ const Footer = () => {
               <i className="bi bi-github"></i>
             </a> */}
             {/* Sitio Web / Red Global */}
-            <a href="#" className="text-white text-decoration-none fs-4 mx-2">
+            {/* <a href="#" className="text-white text-decoration-none fs-4 mx-2">
               <i className="bi bi-globe"></i>
-            </a>
+            </a> */}
             </div>
 
           </div>
