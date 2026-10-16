@@ -24,7 +24,7 @@ const saveProspectData = async(req =  request, res = response) => {
 
     // ARGUMENTOS PARA LOS CORREOS
     const correo2 = process.env.CORREO;
-    const asunto  = `¡Gracias por contactarnos ${nombreCompleto}`;
+    const asunto  = `¡Gracias por contactarnos ${nombreCompleto}!`;
     const asunto2 = `El usuario ${nombreCompleto} esta interesado en un proyecto`;
     
     // DISPARAR CORREOS A LOS USUARIOS

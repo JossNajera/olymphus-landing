@@ -151,7 +151,7 @@ const plantillaProspecto = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="body-text-table">
                     <tr>
                         <td class="paragraph">
-                            Agradecemos tu interés en conocer nuestros servicios. En breve nos pondremos en contacto contigo para que nos platiques un poco más sobre tu proyecto.
+                            Agradecemos tu interés en conocer nuestras soluciones y servicios. En breve nos pondremos en contacto contigo para que nos platiques un poco más sobre tu proyecto.
                         </td>
                     </tr>
 
@@ -171,7 +171,7 @@ const plantillaProspecto = `
 
                     <tr>
                         <td align="center" class="footer-section">
-                            También puedes seguirnos en nuestra página de Facebook en: 
+                            También puedes seguirnos en nuestra página de Facebook: 
                             <div class="footer-link-wrapper">
                                 <a href="https://www.facebook.com/share/1F3wrsnYJR/?mibextid=wwXIfr" class="footer-link">https://www.facebook.com/share/1F3wrsnYJR/?mibextid=wwXIfr</a>
                             </div>
