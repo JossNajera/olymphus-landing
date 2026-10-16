@@ -1,5 +1,4 @@
 import desarrolloImg from '../assets/logo/desarrollo.png'
-import microImg from '../assets/logo/microservicio.png'
 import segImg from '../assets/logo/desarrollo.png'
 import cloudImg from '../assets/logo/cloud.png'
 import dynamics from '../assets/logo/Dynamics.png'
@@ -33,20 +32,6 @@ const Servicios = ({onContactClick2} ) => {
             </div>
           </div>
         </div>
-
-        {/* <div className="col-xl-3 col-md-6">
-          <div className="service-card">
-            <div>
-              <img src={microImg} alt="Microservicios" className="card-icon" />
-              <h3 className="card-title">Microservicios</h3>
-              <p className="card-text">Diseñamos arquitecturas escalables, flexibles y resilientes que permiten a tu negocio crecer sin límites.</p>
-            </div>
-            <div className="mt-4">
-              <a onClick={onContactClick2} className="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold">
-                Saber más</a>
-            </div>
-          </div>
-        </div> */}
 
         <div className="col-xl-3 col-md-6">
           <div className="service-card">
